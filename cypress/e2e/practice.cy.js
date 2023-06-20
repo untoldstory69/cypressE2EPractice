@@ -11,10 +11,10 @@ describe("Practice Cypress Test", () => {
     cy.get("#userNumber").type("123456789");
     cy.get("#subjectsContainer").type("testSubject");
     cy.get("#hobbies-checkbox-1").check({ force: true });
-    // upload file
+    // upload file, uploading image file
     const filePath = './testImage.png';
     cy.get("#uploadPicture").attachFile(filePath);
     cy.get("#currentAddress").type("test Address");
-
+   
   });
 });
