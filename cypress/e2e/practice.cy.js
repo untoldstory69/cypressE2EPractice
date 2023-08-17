@@ -15,6 +15,7 @@ describe("Practice Cypress Test", () => {
     const filePath = './testImage.png';
     cy.get("#uploadPicture").attachFile(filePath);
     cy.get("#currentAddress").type("test Address");
+    
    
   });
 });
