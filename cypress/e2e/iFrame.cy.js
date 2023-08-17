@@ -1,4 +1,4 @@
-/*describe("iFrame", () => {
+describe("iFrame", () => {
   it("Verify text in iFrame", () => {
     cy.visit("https://demoqa.com/");
     cy.get("h5").contains("Alerts, Frame & Windows").click();
@@ -8,4 +8,4 @@
     
   });
 
-});*/
+});
