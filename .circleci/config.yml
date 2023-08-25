@@ -8,8 +8,7 @@ workflows:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
           cypress-cache-path: ~/.cache/custom-dir/Cypress
           #cypress-command: npx cypress run
-          node-cache-version: v2
-      - run:          
-        name: Execute Cypress Tests          
-        command: npm run test:generatereport     
-        when: always
+          node-cache-version: v2            
+          name: Execute Cypress Tests          
+          command: npm run test:generatereport     
+          when: always
