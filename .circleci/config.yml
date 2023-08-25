@@ -11,5 +11,5 @@ workflows:
           node-cache-version: v2
 
           # Upload test results
-      - store_test_results/run:
+      - store_test_results:
         path: ../test-reports
