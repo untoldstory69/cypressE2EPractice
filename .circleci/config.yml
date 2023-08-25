@@ -9,7 +9,9 @@ workflows:
           cypress-cache-path: ~/.cache/custom-dir/Cypress
           #cypress-command: npx cypress run
           node-cache-version: v2   
-          - run:         
-            name: Execute Cypress Tests          
-            command: npm run test:generatereport     
-            when: always
+      docker:
+          - image: cypress/base:10
+              - run:         
+                  name: Execute Cypress Tests          
+                  command: npm run test:generatereport     
+                  when: always
