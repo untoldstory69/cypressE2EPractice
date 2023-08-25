@@ -4,6 +4,8 @@ orbs:
 workflows:
   use-my-orb:
     jobs:
+      - store_test_results:
+          path: ../test-reports
       - cypress/run:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
           cypress-cache-path: ~/.cache/custom-dir/Cypress
@@ -11,5 +13,4 @@ workflows:
           node-cache-version: v2
 
           # Upload test results
-      - store_test_results:
-          path: ../test-reports
+      
