@@ -1,4 +1,4 @@
 node_modules
 cypress-combined-report.json
 mochawesome-report
-#cypress/videos/
+cypress/videos
