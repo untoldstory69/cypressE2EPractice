@@ -1,4 +1,7 @@
 node_modules
 cypress-combined-report.json
 mochawesome-report
-cypress/videos
+cypress/videos/
+cypress/videos/iFrame.cy.js.mp4
+cypress/screenshots/
+
