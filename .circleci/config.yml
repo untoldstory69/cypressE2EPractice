@@ -13,7 +13,7 @@ workflows:
           cypress-command: npm run test:generatereport 
           node-cache-version: v2
 
-    jobs:
+   
       build:
         docker:
           - image: python:3.6.3-jessie
