@@ -6,6 +6,8 @@ orbs:
 
 workflows:
   use-my-orb:
+    
+    working_directory: /tmp
     jobs:
       - cypress/run:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
@@ -16,7 +18,6 @@ workflows:
    
      
 
-        working_directory: /tmp
         steps:
           - run:
               name: Creating Dummy Artifacts
