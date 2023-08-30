@@ -1,15 +1,26 @@
-version: 2.1
+version: 2
+orbs:
+  cypress: cypress-io/cypress@3
 jobs:
-  build:
-    docker:
-      - image: python:3.6.3-jessie
+build:
+  working_directory: /tmp
+  steps:
+    - run:
+        name: Creating Dummy Artifacts
+        command: |
+          echo "my artifact file" > /tmp/art-1;
+          mkdir /tmp/artifacts;
+          echo "my artifact files in a dir" > /tmp/artifacts/art-2;
 
-    working_directory: /tmp
-    steps:
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            mkdir /tmp/artifacts;
-      - store_artifacts:
-          path: /tmp/artifact-1
-          destination: artifact-file
+    - store_artifacts:
+        path: /tmp/art-1
+        destination: artifact-file
+
+    - store_artifacts:
+        path: /tmp/artifacts
+        
+    - cypress/run:
+          cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
+          cypress-cache-path: ~/.cache/custom-dir/Cypress
+          cypress-command: npm run test:generatereport 
+          node-cache-version: v2
