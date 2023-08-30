@@ -10,11 +10,8 @@ workflows:
           cypress-command: npm run test:generatereport 
           node-cache-version: v2
      
-        - store_artifacts:
+      - store_artifacts:
         path: /cypress/videos
-       
-        - store_artifacts:
-        path: /cypress/videos
-      
+    
 
     
