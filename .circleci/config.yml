@@ -9,12 +9,16 @@ workflows:
           cypress-cache-path: ~/.cache/custom-dir/Cypress
           cypress-command: npm run test:generatereport 
           node-cache-version: v2
+      
       - store_artifacts:
-        path: /tmp/art-1
-        destination: artifact-file
-
+          path: test-results/coverage
+          destination: coverage
       - store_artifacts:
-        path: /tmp/artifacts
+          path: test-results/nose
+          destination: test
+      - store_test_results:
+          path: test-results/nose
+          destination: test
 
       
 
