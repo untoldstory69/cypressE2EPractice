@@ -18,7 +18,7 @@ build:
 
     - store_artifacts:
         path: /tmp/artifacts
-        
+jobs:       
     - cypress/run:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
           cypress-cache-path: ~/.cache/custom-dir/Cypress
