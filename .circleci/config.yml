@@ -29,6 +29,4 @@ workflows:
   build_and_test:
     jobs:
       - cypress/run
-      - build:
-          requires:
-            - cypress/run
+      - build
