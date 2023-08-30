@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  cypress: cypress-io/cypress@3
 jobs:
   build:
     docker:
@@ -20,8 +22,7 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts
       
-orbs:
-  cypress: cypress-io/cypress@3
+
 workflows:
   use-my-orb:
     jobs:
