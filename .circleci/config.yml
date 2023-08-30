@@ -15,8 +15,6 @@ workflows:
 
    
      
-        docker:
-          - image: python:3.6.3-jessie
 
         working_directory: /tmp
         steps:
