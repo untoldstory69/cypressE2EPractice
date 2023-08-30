@@ -21,7 +21,7 @@ jobs:
 
       - store_artifacts:
           path: /tmp/artifacts
-      - cypress/run:
+      - run:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
           cypress-cache-path: ~/.cache/custom-dir/Cypress
           cypress-command: npm run test:generatereport 
