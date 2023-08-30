@@ -11,7 +11,7 @@ workflows:
           node-cache-version: v2
      
 name: Creating Dummy Artifacts
-        command: |
+        command:
           echo "my artifact file" > /tmp/art-1;
           mkdir /tmp/artifacts;
           echo "my artifact files in a dir" > /tmp/artifacts/art-2;
