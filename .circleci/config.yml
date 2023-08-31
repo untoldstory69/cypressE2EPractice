@@ -2,7 +2,8 @@ version: "2.1"
 orbs:
   cypress: cypress-io/cypress@3
     jobs:
-      - cypress/run:
+       cypress:
+        run:
           cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
           cypress-cache-path: ~/.cache/custom-dir/Cypress
           cypress-command: npm run test:generatereport 
@@ -11,4 +12,4 @@ orbs:
 workflows:
   use-my-orb:
     jobs:
-      - cypress/run
+      - cypress
