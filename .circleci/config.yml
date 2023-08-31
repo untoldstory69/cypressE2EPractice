@@ -36,5 +36,3 @@ workflows:
           name: Run Cypress Tests
           requires:
             - Install & Persist To Workspace
-      - email/send:
-          name: Sending Email
