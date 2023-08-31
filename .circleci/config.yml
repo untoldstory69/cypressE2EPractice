@@ -1,7 +1,8 @@
+
 version: "2.1"
 orbs:
   cypress: cypress-io/cypress@3
-  workflows:
+workflows:
   use-my-orb:
     jobs:
       - cypress/run:
@@ -37,3 +38,5 @@ orbs:
                 path: << parameters.working-directory >>/cypress/videos
             - store_artifacts:
                 path: << parameters.working-directory >>/cypress/screenshots
+
+          
