@@ -11,7 +11,7 @@ jobs:
             - .cache/Cypress
             - project
           root: ~/
-  run-tests-in-parallel:
+  run-cypress-tests:
     executor: cypress/default
     steps:
       - attach_workspace:
@@ -19,6 +19,7 @@ jobs:
       - cypress/run-tests:
           cypress-command: npm run test:generatereport
       - store_artifacts:
+          name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
         
 workflows:
@@ -26,7 +27,7 @@ workflows:
     jobs:
       - install-and-persist:
           name: Install & Persist To Workspace
-      - run-tests-in-parallel:
-          name: Run Tests in Parallel
+      - run-cypress-tests:
+          name: Run Cypress Tests
           requires:
             - Install & Persist To Workspace
