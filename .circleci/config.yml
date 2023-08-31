@@ -1,6 +1,7 @@
 version: "2.1"
 orbs:
   cypress: cypress-io/cypress@3
+working_directory: /tmp
 workflows:
   use-my-orb:
     jobs:
@@ -11,10 +12,6 @@ workflows:
           node-cache-version: v2
 
       
-      - run:
-          #command: << parameters.cypress-command >>
-          #name: Run Cypress
-          working_directory: /tmp
       - store_artifacts:
           #path: << parameters.working-directory >>/cypress/videos
           path: /tmp/artifact-1
