@@ -25,6 +25,8 @@ jobs:
       - circleci-msteams-orb/notify:
           message: This is a custom message notification
           webhook: $MSTeams_WebHook
+          failure_message: ':red_circle: A $CIRCLE_JOB job has failed!'
+          success_message: ':tada: A $CIRCLE_JOB job has succeeded!'
       
         
 workflows:
