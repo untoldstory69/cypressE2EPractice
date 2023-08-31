@@ -19,5 +19,3 @@ workflows:
           #path: << parameters.working-directory >>/cypress/videos
           path: /tmp/artifact-1
           destination: artifact-file
-      - store_artifacts:
-          #path: << parameters.working-directory >>/cypress/screenshots
