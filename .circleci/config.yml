@@ -1,15 +1,32 @@
-version: 2.1
-
+version: '2.1'
 orbs:
   cypress: cypress-io/cypress@3
-
+jobs:
+  install-and-persist:
+    executor: cypress/default
+    steps:
+      - cypress/install
+      - persist_to_workspace:
+          paths:
+            - .cache/Cypress
+            - project
+          root: ~/
+  run-tests-in-parallel:
+    executor: cypress/default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - cypress/run-tests:
+          cypress-command: npm run test:generatereport
+      - store_artifacts:
+          path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
+        
 workflows:
-  build:
+  use-my-orb:
     jobs:
-      - cypress/run:
-          cypress-command: npm run test:generatereport 
-          post-steps:
-           
-            - store_artifacts:
-                name: Uploading mochawesome-html-report
-                path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
+      - install-and-persist:
+          name: Install & Persist To Workspace
+      - run-tests-in-parallel:
+          name: Run Tests in Parallel
+          requires:
+            - Install & Persist To Workspace
