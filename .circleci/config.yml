@@ -12,5 +12,4 @@ workflows:
            
             - store_artifacts:
                 name: Uploading mochawesome-html-report
-                path: /mochawesome-report
-                destination: ~/CypressE2EPractice/mochawesome-report/cypress-combined-report.html
+                path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
