@@ -2,12 +2,13 @@ version: '2.1'
 orbs:
   cypress: cypress-io/cypress@3
 jobs:
-  run-cypress-test:
+  run-tests-in-parallel:
+    steps:
       - cypress/run-tests:
           cypress-command: npm run test:generatereport
 workflows:
   use-my-orb:
     jobs:
-      - run-cypress-test:
-          name: Run cypress test script
-    
+      - run-tests-in-parallel:
+          name: Run Tests in Parallel
+          
