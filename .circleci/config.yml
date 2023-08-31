@@ -10,20 +10,20 @@ workflows:
           cypress-command: npm run test:generatereport 
           node-cache-version: v2
 
-steps:
-  - when:
-      condition: << parameters.start-command >>
       steps:
+        - when:
+            condition: << parameters.start-command >>
+            steps:
+              - run:
+                  background: true
+                  command: << parameters.start-command >>
+                  name: Start Server
+                  working_directory: << parameters.working-directory >>
         - run:
-            background: true
-            command: << parameters.start-command >>
-            name: Start Server
+            command: << parameters.cypress-command >>
+            name: Run Cypress
             working_directory: << parameters.working-directory >>
-  - run:
-      command: << parameters.cypress-command >>
-      name: Run Cypress
-      working_directory: << parameters.working-directory >>
-  - store_artifacts:
-      path: << parameters.working-directory >>/cypress/videos
-  - store_artifacts:
-      path: << parameters.working-directory >>/cypress/screenshots
+        - store_artifacts:
+            path: << parameters.working-directory >>/cypress/videos
+        - store_artifacts:
+            path: << parameters.working-directory >>/cypress/screenshots
