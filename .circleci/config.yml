@@ -11,9 +11,8 @@ jobs:
             - .cache/Cypress
             - project
           root: ~/
-  run-tests-in-parallel:
-    executor: cypress/default
-    parallelism: 2
+  run-tests:
+    executor: cypress/default  
     steps:
       - attach_workspace:
           at: ~/
@@ -24,7 +23,7 @@ workflows:
     jobs:
       - install-and-persist:
           name: Install & Persist To Workspace
-      - run-tests-in-parallel:
-          name: Run Tests in Parallel
+      - run-tests:
+          name: Run Tests
           requires:
             - Install & Persist To Workspace
