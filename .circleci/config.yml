@@ -1,7 +1,7 @@
 version: '2.1'
 orbs:
   cypress: cypress-io/cypress@3
-  msteams: modernize/circleci-msteams-orb@x.y.z
+  circleci-msteams-orb: modernize/circleci-msteams-orb@0.0.4
 jobs:
   install-and-persist:
     executor: cypress/default
