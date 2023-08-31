@@ -22,10 +22,7 @@ jobs:
       - store_artifacts:
           name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
-  email/send:
-          body: 'email form circle ci'
-          subject: CircleCI job started
-          to: kishorsharma6918@gmail.com       
+      
         
 workflows:
   use-my-orb:
