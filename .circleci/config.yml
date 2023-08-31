@@ -1,32 +1,39 @@
-description: |
-  A single, complete job to run Cypress tests
-parameters:
-  cypress-command:
-    default: npx cypress run
-    description: Command used to run your Cypress tests
-    type: string
-  start-command:
-    default: ''
-    description: Command used to start your local dev server for Cypress to tests against
-    type: string
-  working-directory:
-    default: .
-    description: Directory containing package.json
-    type: string
-steps:
-  - when:
-      condition: << parameters.start-command >>
-      steps:
-        - run:
-            background: true
-            command: << parameters.start-command >>
-            name: Start Server
-            working_directory: << parameters.working-directory >>
-  - run:
-      command: << parameters.cypress-command >>
-      name: Run Cypress
-      working_directory: << parameters.working-directory >>
-  - store_artifacts:
-      path: << parameters.working-directory >>/cypress/videos
-  - store_artifacts:
-      path: << parameters.working-directory >>/cypress/screenshots
+version: "2.1"
+orbs:
+  cypress: cypress-io/cypress@3
+  workflows:
+  use-my-orb:
+    jobs:
+      - cypress/run:
+          description: |
+            A single, complete job to run Cypress tests
+          parameters:
+            cypress-command:
+              default: npx cypress run
+              description: Command used to run your Cypress tests
+              type: string
+            start-command:
+              default: ''
+              description: Command used to start your local dev server for Cypress to tests against
+              type: string
+            working-directory:
+              default: .
+              description: Directory containing package.json
+              type: string
+          steps:
+            - when:
+                condition: << parameters.start-command >>
+                steps:
+                  - run:
+                      background: true
+                      command: << parameters.start-command >>
+                      name: Start Server
+                      working_directory: << parameters.working-directory >>
+            - run:
+                command: << parameters.cypress-command >>
+                name: Run Cypress
+                working_directory: << parameters.working-directory >>
+            - store_artifacts:
+                path: << parameters.working-directory >>/cypress/videos
+            - store_artifacts:
+                path: << parameters.working-directory >>/cypress/screenshots
