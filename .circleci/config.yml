@@ -15,7 +15,7 @@ jobs:
     executor: cypress/default  
     steps:
       - attach_workspace:
-          at: ~/videos
+          at: ~/
       - cypress/run-tests:
           cypress-command: npm run test:generatereport
 workflows:
