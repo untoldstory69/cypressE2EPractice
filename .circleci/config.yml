@@ -18,6 +18,9 @@ jobs:
           at: ~/
       - cypress/run-tests:
           cypress-command: npm run test:generatereport
+      - store_artifacts:
+          path: ~/
+          destination: artifact-file
 workflows:
   use-my-orb:
     jobs:
