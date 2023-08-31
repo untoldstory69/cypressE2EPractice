@@ -10,12 +10,8 @@ workflows:
             A single, complete job to run Cypress tests
           parameters:
             cypress-command:
-              default: npx cypress run
+              default: npm run test:generatereport
               description: Command used to run your Cypress tests
-              type: string
-            start-command:
-              default: ''
-              description: Command used to start your local dev server for Cypress to tests against
               type: string
             working-directory:
               default: .
