@@ -22,7 +22,7 @@ jobs:
       - store_artifacts:
           name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
-      - msteams/notify:
+      - circleci-msteams-orb/notify:
           message: This is a custom message notification
           webhook: $MSTeams_WebHook
       
