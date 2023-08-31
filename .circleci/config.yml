@@ -1,6 +1,7 @@
 version: '2.1'
 orbs:
   cypress: cypress-io/cypress@3
+  msteams: modernize/circleci-msteams-orb@x.y.z
 jobs:
   install-and-persist:
     executor: cypress/default
@@ -21,6 +22,9 @@ jobs:
       - store_artifacts:
           name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
+      - msteams/notify:
+          message: This is a custom message notification
+          webhook: $MSTeams_WebHook
       
         
 workflows:
