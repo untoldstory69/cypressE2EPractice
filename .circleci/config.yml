@@ -12,10 +12,12 @@ workflows:
 
       
       - run:
-          command: << parameters.cypress-command >>
-          name: Run Cypress
-          working_directory: << parameters.working-directory >>
+          #command: << parameters.cypress-command >>
+          #name: Run Cypress
+          working_directory: /tmp
       - store_artifacts:
-          path: << parameters.working-directory >>/cypress/videos
+          #path: << parameters.working-directory >>/cypress/videos
+          path: /tmp/artifact-1
+          destination: artifact-file
       - store_artifacts:
-          path: << parameters.working-directory >>/cypress/screenshots
+          #path: << parameters.working-directory >>/cypress/screenshots
