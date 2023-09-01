@@ -23,7 +23,7 @@ jobs:
           name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
       - circleci-msteams-orb/notify:
-          message: This is a custom message notification
+          message: The CirlceCI build hase been completed. Please click View Job for more details.
           webhook: $MSTeams_WebHook
       
         
