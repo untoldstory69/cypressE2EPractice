@@ -5,7 +5,7 @@ describe("Practice Cypress Test", () => {
     cy.contains("Practice Form").click();
     //Filling form
     cy.get("#firstName").type("Kysor");
-    cy.get("#lastName").type("Srma");
+    cy.get("#lastNam").type("Srma");
     cy.get("#userEmail").type("test@email.com");
     cy.get("#gender-radio-1").check({ force: true });
     cy.get("#userNumber").type("123456789");
