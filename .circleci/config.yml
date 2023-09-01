@@ -3,6 +3,10 @@ orbs:
   cypress: cypress-io/cypress@3
   circleci-msteams-orb: modernize/circleci-msteams-orb@0.0.4
 jobs:
+  send-teams-notificaion:
+      - circleci-msteams-orb/notify:
+            message: The CirlceCI build hase been completed. Please click View Job for more details.
+            webhook: $MSTeams_WebHook
   install-and-persist:
     executor: cypress/default
     steps:
@@ -21,15 +25,15 @@ jobs:
           cypress-command: npm run test:generatereport
       - store_artifacts:
           name: Uploading Mochawesome HTML Report
-          path: /home/circleci/project/mochawesome-report/*
-      - circleci-msteams-orb/notify:
-          message: The CirlceCI build hase been completed. Please click View Job for more details.
-          webhook: $MSTeams_WebHook
+          path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
+      
       
         
 workflows:
   use-my-orb:
     jobs:
+      - send-teams-notificaion:
+          name: Send build completion notification to MS-Teams
       - install-and-persist:
           name: Install & Persist To Workspace
       - run-cypress-tests:
