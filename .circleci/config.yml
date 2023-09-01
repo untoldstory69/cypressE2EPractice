@@ -19,13 +19,12 @@ jobs:
           at: ~/
       - cypress/run-tests:
           cypress-command: npm run test:generatereport
-      - circleci-msteams-orb/notify:
-          message: The CircleCi build has completed. Please click "View Job" for more details.
-          webhook: $MSTeams_WebHook    
       - store_artifacts:
           name: Uploading Mochawesome HTML Report
           path: /home/circleci/project/mochawesome-report/cypress-combined-report.html
-      
+      - circleci-msteams-orb/notify:
+          message: The CircleCi build has completed. Please click "View Job" for more details.
+          webhook: $MSTeams_WebHook
   
 workflows:
   use-my-orb:
